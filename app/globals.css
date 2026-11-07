@@ -1,0 +1,40 @@
+@import "tailwindcss";
+
+@theme {
+  --color-paper: #000000;
+  --color-surface: #0d0d0c;
+  --color-ink: #ecebe6;
+  --color-mute: #9a9a92;
+  --color-line: #2a2a27;
+  --color-olive: #ffc20e; /* accent, now COD yellow (name kept so no other file changes) */
+  --color-olive-dark: #e0a800; /* accent hover */
+  --color-alert: #ff6b4a;
+  --color-white: #000000; /* only used as text on yellow buttons and tags, so it must be dark */
+  --font-sans: var(--font-archivo), ui-sans-serif, system-ui, sans-serif;
+}
+
+html {
+  color-scheme: dark;
+}
+body {
+  background: var(--color-paper);
+  color: var(--color-ink);
+  font-feature-settings: "tnum";
+}
+:focus-visible {
+  outline: 2px solid var(--color-olive);
+  outline-offset: 2px;
+}
+dialog {
+  border: 1px solid var(--color-line);
+}
+dialog::backdrop {
+  background: rgb(0 0 0 / 0.75);
+}
+details > summary {
+  list-style: none;
+  cursor: pointer;
+}
+details > summary::-webkit-details-marker {
+  display: none;
+}
