@@ -10,8 +10,14 @@ export async function createClient() {
   return createServerClient(url, key, {
     cookies: {
       getAll: () => store.getAll(),
-      setAll: (list) => {
-        try { list.forEach(({ name, value, options }) => store.set(name, value, options)); } catch { /* called from a server component: middleware refreshes the session instead */ }
+      setAll: (list: { name: string; value: string; options?: any }[]) => {
+        try {
+          list.forEach(({ name, value, options }) =>
+            store.set(name, value, options),
+          );
+        } catch {
+          /* called from a server component: middleware refreshes the session instead */
+        }
       },
     },
   });
